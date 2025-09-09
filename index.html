@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degree Verification Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .upload-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Degree Verification Demo</h1>
+
+    <div class="upload-section">
+        <p>Upload a degree certificate to check if it is genuine:</p>
+        <form id="degreeForm">
+            <input type="file" id="degreeFile" accept=".pdf,.jpg,.png" required>
+            <br>
+            <button type="submit">Verify Degree</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('degreeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('degreeFile');
+            const resultDiv = document.getElementById('result');
+
+            if(fileInput.files.length === 0) {
+                resultDiv.style.color = 'red';
+                resultDiv.textContent = 'Please select a file to upload.';
+                return;
+            }
+
+            // This is just a demo simulation
+            // You can later connect it to your backend verification API
+            resultDiv.style.color = 'green';
+            resultDiv.textContent = 'Degree verification in progress...';
+
+            setTimeout(() => {
+                resultDiv.textContent = '✅ Degree is genuine (demo result)';
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>
