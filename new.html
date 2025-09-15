@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Degree Verification Demo</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: #333;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .upload-section {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 350px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .upload-section p {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+      padding: 10px;
+      border: 2px dashed #007bff;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      width: 100%;
+      transition: border-color 0.3s;
+    }
+
+    input[type="file"]:hover {
+      border-color: #2575fc;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #007bff, #00d4ff);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+    }
+
+    #result {
+      margin-top: 25px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: green;
+      min-height: 25px;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎓 Degree Verification Demo</h1>
+
+  <div class="upload-section">
+    <p>Upload a degree certificate to check if it is genuine:</p>
+    <form id="degreeForm">
+      <input type="file" id="degreeFile" accept=".pdf,.jpg,.png" required>
+      <br>
+      <button type="submit">Verify Degree</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('degreeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const fileInput = document.getElementById('degreeFile');
+      const resultDiv = document.getElementById('result');
+
+      if(fileInput.files.length === 0) {
+        resultDiv.style.color = 'red';
+        resultDiv.textContent = '⚠️ Please select a file to upload.';
+        return;
+      }
+
+      // Demo Simulation
+      resultDiv.style.color = '#ff9800';
+      resultDiv.textContent = '⏳ Degree verification in progress...';
+
+      setTimeout(() => {
+        resultDiv.style.color = 'green';
+        resultDiv.textContent = '✅ Degree is genuine (demo result)';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

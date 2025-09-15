@@ -39,23 +39,8 @@ h1 {
 
 .upload-section p {
   color: #666;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 1rem;
-}
-
-select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #007bff;
-  background: #f9f9f9;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-select:hover {
-  border-color: #2575fc;
 }
 
 input[type="file"] {
@@ -127,6 +112,7 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Responsive tweaks */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.8rem;

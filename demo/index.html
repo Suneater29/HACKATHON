@@ -7,25 +7,52 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🎓 Degree Authentication Demo</h1>
+  <h1>Degree/Certificate Authentication</h1>
 
   <div class="upload-section">
-    <p1>Upload a degree/certificate to 
-        <br>check 
-        if it is genuine or fake:</p1>
-    <form id="degreeForm">
+    <p>Select document format first:</p>
+    <select id="formatSelect" required>
+      <option value="">-- Choose Format --</option>
+      <option value="application/pdf">PDF (.pdf)</option>
+      <option value="image/jpeg">JPG (.jpg)</option>
+      <option value="image/png">PNG (.png)</option>
+      <option value="text/plain">TXT (.txt)</option>
+    </select>
+
+    <form id="degreeForm" class="hidden">
       <div class="input-wrap">
-        <input type="file" id="degreeFile" accept=".pdf,.jpg,.png,.txt,.docs" required>
+        <input type="file" id="degreeFile" required>
       </div>
       <button type="submit">Verify Degree</button>
     </form>
+
     <div id="result"></div>
     <button id="tryAgainBtn" class="hidden">🔄 Try Again</button>
   </div>
 
+  <!-- Disclaimer (optional) -->
+  <!--
   <div class="disclaimer">
     ⚠️ This is a <b>demo simulation</b>. Results shown are not official.
   </div>
+  -->
+
   <script src="script.js"></script>
+  <script>
+    const formatSelect = document.getElementById('formatSelect');
+    const degreeForm = document.getElementById('degreeForm');
+    const fileInput = document.getElementById('degreeFile');
+
+    // Show file input when format is selected
+    formatSelect.addEventListener('change', () => {
+      if (formatSelect.value) {
+        degreeForm.classList.remove('hidden');
+        fileInput.setAttribute('accept', formatSelect.value);
+      } else {
+        degreeForm.classList.add('hidden');
+        fileInput.removeAttribute('accept');
+      }
+    });
+  </script>
 </body>
 </html>

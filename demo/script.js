@@ -4,6 +4,11 @@ const resultDiv = document.getElementById('result');
 const submitBtn = form.querySelector('button');
 const tryAgainBtn = document.getElementById('tryAgainBtn');
 
+// probabilities (configurable)
+const PROB_FAKE = 0.3;       // 30%
+const PROB_NOT_FOUND = 0.2;  // 20%
+// remaining (50%) → genuine
+
 function humanFileSize(bytes) {
   const thresh = 1024;
   if (Math.abs(bytes) < thresh) return bytes + ' B';
@@ -39,33 +44,44 @@ form.addEventListener('submit', function (e) {
   const file = fileInput.files[0];
   const filename = file.name;
   const filesize = humanFileSize(file.size);
+  const filetype = file.type || 'Unknown';
 
   submitBtn.disabled = true;
   fileInput.disabled = true;
   tryAgainBtn.classList.add('hidden');
 
+  // show loader + file details
   resultDiv.className = 'result-neutral';
   resultDiv.innerHTML = `
     <div class="loader" aria-hidden="true"></div>
     <div>⏳ Verifying degree...</div>
-    <div class="meta">${filename} • ${filesize}</div>
+    <div class="meta">
+      📄 File: ${filename} <br>
+      📦 Size: ${filesize} <br>
+      📝 Type: ${filetype}
+    </div>
   `;
 
   const processingTimeMs = 1800 + Math.floor(Math.random() * 1400);
   setTimeout(() => {
-    const isFake = Math.random() < 0.30;
-
-    if (isFake) {
+    const rand = Math.random();
+    if (rand < PROB_FAKE) {
       setResult({
         type: 'error',
-        message: '❌ Fake degree detected (demo simulation).',
-        meta: `File: ${filename} • ${filesize}`
+        message: '❌ Fake degree detected',
+        meta: `File: ${filename} • ${filesize} • ${filetype}`
+      });
+    } else if (rand < PROB_FAKE + PROB_NOT_FOUND) {
+      setResult({
+        type: 'error',
+        message: '⚠️ No matching record found in database',
+        meta: `File: ${filename} • ${filesize} • ${filetype}`
       });
     } else {
       setResult({
         type: 'success',
-        message: '✅ Degree appears genuine (demo result).',
-        meta: `File: ${filename} • ${filesize}`
+        message: '✅ Degree appears genuine',
+        meta: `File: ${filename} • ${filesize} • ${filetype}`
       });
     }
 
