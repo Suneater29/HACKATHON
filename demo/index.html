@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Degree Authenticator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🎓 Degree Authentication Demo</h1>
+
+  <div class="upload-section">
+    <p1>Upload a degree/certificate to 
+        <br>check 
+        if it is genuine or fake:</p1>
+    <form id="degreeForm">
+      <div class="input-wrap">
+        <input type="file" id="degreeFile" accept=".pdf,.jpg,.png,.txt,.docs" required>
+      </div>
+      <button type="submit">Verify Degree</button>
+    </form>
+    <div id="result"></div>
+    <button id="tryAgainBtn" class="hidden">🔄 Try Again</button>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ This is a <b>demo simulation</b>. Results shown are not official.
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
