@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Degree Authenticator</title>
+  <link rel="stylesheet" href="auth-style.css">
+</head>
+<body>
+  <h1> Degree/Certificate Verification</h1>
+
+  <div class="upload-section">
+    <p>Upload a degree/certificate to check if it is genuine or not:</p>
+    <form id="degreeForm">
+      
+      <!-- New dropdown to select document format -->
+      <label for="docFormat">Select Document Format:</label>
+      <select id="docFormat" required>
+        <option value="">-- Select Format --</option>
+        <option value="pdf">PDF</option>
+        <option value="jpg">JPG</option>
+        <option value="png">PNG</option>
+      </select>
+
+      <br><br>
+      <input type="file" id="degreeFile" required>
+      <br>
+      <button type="submit">Verify Degree</button>
+    </form>
+
+    <!-- Result area -->
+    <div id="result"></div>
+  </div>
+
+  <script src="auth-script.js"></script>
+</body>
+</html>

@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Degree Verification Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Degree Authenticator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🎓 Degree Verification Demo</h1>
+  <!-- Navigation -->
+  <header>
+    <div class="logo">LOGO HERE</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu">&#9776;</div>
+  </header>
 
-  <div class="upload-section">
-    <p>Upload a degree certificate to check if it is genuine:</p>
-    <form id="degreeForm">
-      <input type="file" id="degreeFile" accept=".pdf,.jpg,.png" required>
-      <br>
-      <button type="submit">Verify Degree</button>
-    </form>
-    <div id="result"></div>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- <h1>Welcome</h1> -->
+    <h1>Degree/Certificate Authenticator</h1>
+    <p class="sub-text">This is a demo welcome page for verifying documents. Click the button below to continue.</p>
+    <button id="verifyBtn">Click here to Verify</button>
+  </section>
 
   <script src="script.js"></script>
-    <!-- demo control: choose outcome or let it auto-pick -->
-  <label for="forceOutcome" style="display:block;margin-top:8px;font-size:0.95rem;color:#444;">
-    Demo mode:
-  </label>
-  <select id="forceOutcome" aria-label="Demo mode" style="margin-bottom:12px;padding:8px;border-radius:6px;">
-    <option value="auto">Auto (random)</option>
-    <option value="genuine">Force: Genuine</option>
-    <option value="invalid">Force: Invalid</option>
-    <option value="nodata">Force: No data</option>
-  </select>
-
 </body>
 </html>
